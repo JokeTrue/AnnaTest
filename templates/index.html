@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Anna WS Server </title>
+    <link href="{{ app.router.static.url_for(filename='css/main.css') }}" rel="stylesheet">
+</head>
+<body>
+<div class="content">
+    <div class="header">
+        <div class="header__logo"></div>
+        <div class="header__title">Factorial Web Server</div>
+    </div>
+    <div class="formula_wrapper">
+        <div class="find">The factorial of</div>
+        <input type="number" id="factorial_value" value=""/>
+    </div>
+    <div id="find_btn">Find out</div>
+    <div class="results"></div>
+</div>
+<script src="{{ app.router.static.url_for(filename='vendor/jquery-3.3.1.min.js') }}"></script>
+<script src="{{ app.router.static.url_for(filename='vendor/rWS.js') }}"></script>
+<script src="{{ app.router.static.url_for(filename='js/main.js') }}"></script>
+</body>
+</html>

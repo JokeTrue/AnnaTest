@@ -1,0 +1,12 @@
+# virtualenv
+.venv
+env
+.env
+venv/
+
+# Python
+*.pyc
+*.pyo
+
+
+.idea
