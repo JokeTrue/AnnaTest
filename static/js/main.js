@@ -12,6 +12,8 @@ $(document).ready(function () {
         if (data.type == 'new_value') {
             results.append($('<div class="f_value">' + data.value + '</div>').hide());
             $('.f_value:last').fadeIn(500);
+        } else if (data.type == 'error') {
+            alert('Enter valid value');
         }
     };
 

@@ -9,8 +9,6 @@ class WebSocket(web.View):
     data = {0: 1, 1: 1, 2: 2}
 
     async def factorial(self, n: int) -> int:
-        n = abs(n)
-
         if n in self.data:
             return self.data[n]
 
@@ -21,6 +19,12 @@ class WebSocket(web.View):
         self.data[n] = answer
 
         return answer
+
+    def clean_value(self, value):
+        try:
+            return abs(int(value))
+        except ValueError:
+            return None
 
     async def get(self):
         ws = web.WebSocketResponse()
@@ -35,14 +39,19 @@ class WebSocket(web.View):
                     await ws.close()
 
                 elif data.get('type') == 'factorial':
-                    value = int(data.get('value'))
-                    await self.factorial(value)
+                    value = self.clean_value(data.get('value'))
 
-                    for i, item in enumerate(self.data.values(), start=0):
-                        if i <= value:
-                            await ws.send_json({'type': 'new_value', 'value': item})
+                    if value:
+                        await self.factorial(value)
 
-                        await asyncio.sleep(0.1)
+                        for i, item in enumerate(self.data.values()):
+                            if i <= value:
+                                await ws.send_json({'type': 'new_value', 'value': item})
+
+                            await asyncio.sleep(0.1)
+
+                    else:
+                        await ws.send_json({'type': 'error'})
 
         return ws
 

@@ -23,8 +23,8 @@ body {
     height: 100%;
     text-align: center;
     background: #40e0d0;
-    background: -webkit-linear-gradient(to right, #40e0d0, #ff8c00, #ff0080);
-    background: linear-gradient(to right, #40e0d0, #ff8c00, #ff0080);
+    background: -webkit-linear-gradient(to right, #ff0080, #ff8c00, #40e0d0);
+    background: linear-gradient(to right, #ff0080, #ff8c00, #40e0d0);
 }
 
 .content {
@@ -43,6 +43,8 @@ body {
 
 .header__logo {
     display: inline-block;
+    position: relative;
+    color: transparent;
     height: 55px;
     width: 150px;
     background: url('../img/anna_logo.svg');
@@ -51,12 +53,27 @@ body {
     background-size: cover;
 }
 
+.header__logo:after {
+    content: 'TM';
+    display: block;
+    font-family: 'Proxima Nova Bold', sans-serif;
+    font-size: 6px;
+    color: #e9614e;
+    position: absolute;
+    top: 0;
+    right: -10px;
+}
+
+.header__logo:hover, .header__logo:focus {
+    color: transparent;
+}
+
 .header__title {
     display: inline-block;
     font-family: 'Proxima Nova Bold', sans-serif;
     font-weight: bold;
     font-size: 50px;
-    margin-left: 25px;
+    margin-right: 25px;
     color: #fff;
 }
 
@@ -106,8 +123,8 @@ body {
 }
 
 #find_btn:hover {
-    border: 1px solid #ff8c00;
-    color: #ff8c00;
+    border: 1px solid #e9614e;
+    color: #e9614e;
     background: #fff;
 }
 
@@ -125,10 +142,12 @@ body {
     font-family: 'Proxima Nova Regular', sans-serif;
     font-size: 40px;
     color: #fff;
-    margin-right: 20px;
+    margin: 5px 20px 5px 0;
 }
 
 .f_value:last-child {
     margin-right: 0 !important;
     border-bottom: 2px solid red;
+    font-family: 'Proxima Nova Bold', sans-serif;
+    font-size: 42px;
 }
