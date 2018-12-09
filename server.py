@@ -15,6 +15,6 @@ app.router.add_static('/static', 'static', name='static')
 # Templates
 aiohttp_jinja2.setup(app, loader=jinja2.FileSystemLoader('templates'))
 
-web.run_app(app, port=9001)
+web.run_app(app, port=9000)
 
 
